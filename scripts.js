@@ -56,9 +56,9 @@ function getGuess(randomNum, guess, maxNum) {
     gameWon();
     guessArr.push(guess);
     if (guessArr.length === 1) {
-      newPar.innerHTML = `You got it! It took you ${guessArr.length} guess and your guess was: ${guessArr}.`;
+      newPar.innerHTML = `You got it! Your number was between 1 and ${maxNum}. It took you ${guessArr.length} guess and your guess was: ${guessArr}.`;
     } else {
-      newPar.innerHTML = `You got it! It took you ${
+      newPar.innerHTML = `You got it! Your number was between 1 and ${maxNum}. It took you ${
         guessArr.length
       } guesses and your guesses were: ${guessArr.join(", ")}.`;
     }
