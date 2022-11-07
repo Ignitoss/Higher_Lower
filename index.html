@@ -18,16 +18,18 @@
   <body>
     <div class="container">
       <h1>Higher - Lower</h1>
-      <p class="minMax"></p>
-      <div class="row">
-        <div class="col-lg-3 col-md-6">
-          <form>
+      <p id="minMax"></p>
+      <div id="mainLayout" class="row">
+        <div id="formLayout" class="col-lg-3 col-md-6">
+          <form id="form">
             <div class="form-group">
               <label for="guess">Your Guess:</label><br />
               <input type="text" id="guess" name="guess" class="form-control" />
             </div>
           </form>
-          <button type="button" class="btn btn-primary">Guess</button>
+          <button type="button" id="guessBtn" class="btn btn-primary">
+            Guess
+          </button>
         </div>
       </div>
     </div>
