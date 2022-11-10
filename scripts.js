@@ -1,15 +1,15 @@
 // variables
 const formEntry = document.getElementById("guess");
 const guessBtn = document.getElementById("guessBtn");
-const div = document.getElementById("mainLayout");
+const mainLayout = document.getElementById("mainLayout");
 const formLayout = document.getElementById("formLayout");
 const newPar = document.createElement("p");
 const reloadBtn = document.createElement("button");
-const formTag = document.getElementById("form");
+const formTag = document.getElementById("number-guess-form");
 let minMaxPar = document.getElementById("minMax");
 let validInput = false;
 let maxNum, randomNum;
-let guessArr = [];
+const guessArr = [];
 
 // Prompt max number from user
 while (!validInput) {
@@ -34,7 +34,7 @@ randomNum = Math.floor(Math.random() * maxNum) + 1;
 guessBtn.addEventListener("click", function (e) {
   e.preventDefault();
   let guess = Math.round(Number(document.getElementById("guess").value));
-  getGuess(randomNum, guess, maxNum);
+  getGuess(guess);
   formEntry.value = ""; //clear field
 });
 
@@ -47,16 +47,16 @@ formEntry.addEventListener("keydown", function (e) {
 });
 
 //Determine guess success or failure, display appropriate messages
-function getGuess(randomNum, guess, maxNum) {
+function getGuess(guess) {
   if (isNaN(guess)) {
     newPar.innerHTML = "That is not a number! Try again!";
   } else if (guessArr.includes(guess)) {
     newPar.innerHTML = `${guess} has already been guessed! Please try again.`;
   } else if (guess === randomNum) {
-    gameWon();
+    gameReset();
     guessArr.push(guess);
     if (guessArr.length === 1) {
-      newPar.innerHTML = `You got it! Your number was between 1 and ${maxNum}. It took you ${guessArr.length} guess and your guess was: ${guessArr}.`;
+      newPar.innerHTML = `You got it! Your number was between 1 and ${maxNum}. It took you 1 guess and your guess was: ${guessArr[0]}.`;
     } else {
       newPar.innerHTML = `You got it! Your number was between 1 and ${maxNum}. It took you ${
         guessArr.length
@@ -71,11 +71,11 @@ function getGuess(randomNum, guess, maxNum) {
   } else {
     newPar.innerHTML = "That number is not in range, please try again.";
   }
-  div.appendChild(newPar);
+  mainLayout.appendChild(newPar);
 }
 
 // manage clearing and adding DOM elements after success
-function gameWon() {
+function gameReset() {
   minMaxPar.remove();
   guessBtn.remove();
   formTag.remove();
